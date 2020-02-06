@@ -1,0 +1,8 @@
+.container {
+    grid-template-columns: 10% 20% 20% 20% 20% 10%;
+    grid-template-rows: 7% 10% 25% 25% 25% 8%; 
+}
+.index-header {
+    color: brown;
+}
+
