@@ -7,6 +7,6 @@ class Blop(models.Model):
     content  = models.URLField(max_length=200)
     article = models.TextField(max_length="1000")
     likes = models.PositiveIntegerField()
-   created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField test(auto_now_add=True)
     
     
