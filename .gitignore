@@ -88,5 +88,9 @@ tags
 # Python #
 #######
 *.pyc
+<<<<<<< HEAD
 __pycache__/
 */__pycache__
+=======
+__pycache__
+>>>>>>> 5aefb0d3bcc921bd16651466aff024a4003ad4e9
