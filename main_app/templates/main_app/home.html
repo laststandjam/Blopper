@@ -1,6 +1,9 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main_app/home.css' %}">
+<div class="container">
+    <h1 id="title">BLOPPERS</h1>
+</div>   
 
-<h1>Home</h1>
-<h3>Checking if connencted</h3>
 {% endblock %}

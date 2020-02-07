@@ -1,0 +1,9 @@
+.stripes {
+    background: linear-gradient(90deg, rgb(255, 212,0.3) 50%, rgb(0,0,0,0) 50%, rgb(255, 177, 10) 0), #ccc;
+    background-size:50px auto;
+    }
+    .nav-wrapper {
+        background-color: transparent;
+        font-family: 'Bungee Shade', cursive;
+        display: inline-block;
+    } 
