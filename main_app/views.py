@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Blopper
 
 def home(request):
   return render(request, 'main_app/home.html')
@@ -13,7 +14,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('main_app:index')
+      return redirect('main_app:home')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
