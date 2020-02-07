@@ -5,5 +5,7 @@ from django.conf.urls.static import static
 app_name = 'main_app'
 urlpatterns = [
   path('', views.home, name='home'),
-  path('signup/', views.signup, name='signup')
+  path('signup/', views.signup, name='signup'),
+  path('blops/<int:blop_id>/', views.blop_details, name='blop_details'),
+  path('blops/create', views.BlopCreate.as_view(), name='create_blop')
 ]
