@@ -1,6 +1,5 @@
 .vscode
 .venv
-migrations
 # Compiled source #
 ###################
 *.class
