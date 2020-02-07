@@ -3,24 +3,15 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Blop, Comment
+from .forms import CommentForm
 
 def home(request):
-  videos = Blop.objects.exclude(video = None)
-  pictures = Blop.objects.exclude(image = None)
-  articles = Blop.objects.exclude(article = "")
-  return render(request, 'main_app/home.html',{'videos': videos,
-   'pictures':pictures,
-   'articles':articles,
-   })
+  return render(request, 'main_app/home.html')
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
   return render(request, 'main_app/detail.html', {
-    'title': blop.title,
-    'video': blop.video,
-    'image': blop.image,
-    'article': blop.article,
-    'likes': blop.likes,
+    'blop': blop
   })
 
 def signup(request):
@@ -47,43 +38,10 @@ class BlopCreate(CreateView):
     return super().form_valid(form)
 
 def comment_create(request, blop_id):
-  form = FeedingForm(request.POST)
-  # validate the form
+  form = CommentForm(request.POST)
   if form.is_valid():
-    # don't save the form to the db until it
-    # has the cat_id assigned
-    new_feeding = form.save(commit=False)
-    new_feeding.finch_id = finch_id
-    new_feeding.save()
-  return redirect('main_app:detail', finch_id=finch_id)
-
-class CommentCreate(CreateView):
-  model = Comment
-  fields = ['content']
-  def form_valid(self, form):
-    form.instance.creator = self.request.user
-    return super().form_valid(form)
-
-
-
-
-class CommentUpdate(UpdateView):
-  model = Comment
-  context_object_name = 'comment'
-  fields = ['content']
-
-class FinchDelete(DeleteView):
-  model = Comment
-  success_url = '/'
-
-def comment_delete(request, blop_id):
-  # create the ModelForm using the data in request.POST
-  form = FeedingForm(request.POST)
-  # validate the form
-  if form.is_valid():
-    # don't save the form to the db until it
-    # has the cat_id assigned
-    new_feeding = form.save(commit=False)
-    new_feeding.finch_id = finch_id
-    new_feeding.save()
-  return redirect('main_app:detail', finch_id=finch_id)
+    new_comment = form.save(commit=False)
+    new_comment.creator = request.user
+    new_comment.blop = Blop.objects.get(id=blop_id)
+    new_comment.save()
+  return redirect('main_app:blop_details', blop_id=blop_id)
