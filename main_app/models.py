@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 class Blop(models.Model):
     creator = models.ForeignKey(User, on_delete =models.CASCADE)
     title = models.CharField (max_length=100)
-    content  = models.URLField(max_length=200)
+    video  = models.URLField(max_length=200)
+    image = models.ImageField()
     article = models.TextField(max_length="1000")
     likes = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
