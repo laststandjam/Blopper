@@ -6,26 +6,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
   <title>Bloppers</title>
 </head>
 <body class="stripes">
-  <header>
-    <nav>
-      <ul>
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'logout' %}">Log Out</a></li>
-        {% else %}
-          <li><a href ="{% url 'main_app:signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-  </header>
+  <div class="container">
+          <header class="navbar-fixed">
+              <nav>
+                <div class="nav-wrapper">
+                  <ul>
+                    <li>Vid Blops</a></li>
+                    <li>Pic Blops</a></li>
+                    <li>Word Blops</a></li>
+                    <li>Search</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                  {% else %}
+                    <li><a href ="{% url 'main_app:signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                  {% endif %}
+                  </ul>
+                </div>
+              </nav>
+          </header>
   <main>
     {% block content %}
     {% endblock %}
   </main>
   <footer>
   </footer>
+  </div>
 </body>
 </html>
