@@ -5,5 +5,18 @@
 <div class="container">
     <h1 id="title">BLOPPERS</h1>
 </div>   
+<h3>Top Videos</h3>
+{% for blop in videos %} {if forloop.counter < 6}
+<video src="{{blop.video.url}}"></video>
+{% endfor %}
 
+<h3>Top Pictures</h3>
+{%for blop in images%} {if forloop.counter < 6}
+<img src="{{ blop.image.url }}" />
+{% endfor %}
+
+<h3>Top WORDS</h3>
+{%for blop in articles%} {if forloop.counter < 6} 
+{{blop.title}} 
+{%endfor%}
 {% endblock %}
