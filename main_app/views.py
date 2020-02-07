@@ -6,7 +6,13 @@ from .models import Blop, Comment
 from .forms import CommentForm
 
 def home(request):
-  return render(request, 'main_app/home.html')
+  videos = Blop.objects.exclude(video = None)
+  pictures = Blop.objects.exclude(image = None)
+  articles = Blop.objects.exclude(article = "")
+  return render(request, 'main_app/home.html',{'videos': videos,
+   'pictures':pictures,
+   'articles':articles,
+   })
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
@@ -31,8 +37,6 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 class BlopCreate(CreateView):
-  #add something that checks if a user is logged in.
-  #if user is not logged in they are redirected to the login page
   model = Blop
   fields = ['title', 'video', 'image', 'article']
   def form_valid(self, form):
