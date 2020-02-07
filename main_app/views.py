@@ -10,8 +10,10 @@ def home(request):
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
+  comments = blop.comment_set.all()
   return render(request, 'main_app/detail.html', {
-    'blop': blop
+    'blop': blop,
+    'comments': comments
   })
 
 def signup(request):
