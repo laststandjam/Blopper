@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Blopper
+from .models import Blop
 
 def home(request):
   return render(request, 'main_app/home.html')
@@ -20,3 +20,12 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+class BlopCreate(CreateView):
+  #add something that checks if a user is logged in.
+  #if user is not logged in they are redirected to the login page
+  model = Blop
+  fields = ['title', 'video', 'image', 'article']
+  def form_valid(self, form):
+    form.instance.creator = self.request.user
+    return super().form_valid(form)
