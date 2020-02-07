@@ -7,3 +7,15 @@
         font-family: 'Bungee Shade', cursive;
         display: inline-block;
     } 
+    li {
+        width: 200px;
+        min-height: 25px;
+        border: none;
+        display: -moz-inline-stack;
+        display: inline-block;
+        vertical-align: top;
+        margin: 5px;
+        zoom: 1;
+        *display: inline;
+        _height: 25px;
+}
