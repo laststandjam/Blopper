@@ -3,4 +3,23 @@
 
 <h1 class="index-header">BLOPPERS</h1>
 
+<h3>Top Videos</h3>
+{% for blop in videos %}
+{if forloop.counter < 6}
+<video src="{{blop.image.urgl}}"></video>
+{% endfor %}
+
+
+<h3>Top Pictures</h3>
+{%for blop  in images%}
+{if forloop.counter < 6}
+<img src="{{ blop.image.url }}">
+{% endfor %}
+
+<h3>Top Words</h3>
+{%for blop in articles}
+{if forloop.counter < 6}
+{{blop.title}}
+{% endfor %}
+
 {% endblock %}

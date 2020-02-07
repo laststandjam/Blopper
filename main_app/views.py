@@ -5,7 +5,13 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Blop
 
 def home(request):
-  return render(request, 'main_app/home.html')
+  videos = Blop.objects.filter(video != None)
+  pictures = Blop.objects.filter(image != None)
+  articles = Blop.objects.filter(article != None)
+  return render(request, 'main_app/home.html',{'videos': videos,
+   'pictures':pictures,
+   'articles':articles,
+   })
 
 def signup(request):
   error_message = ''
