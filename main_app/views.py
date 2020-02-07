@@ -7,6 +7,16 @@ from .models import Blop
 def home(request):
   return render(request, 'main_app/home.html')
 
+def blop_details(request, blop_id):
+  blop = Blop.objects.get(id=blop_id)
+  return render(request, 'main_app/detail.html', {
+    'title': blop.title,
+    'video': blop.video,
+    'image': blop.image,
+    'article': blop.article,
+    'likes': blop.likes,
+  })
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
