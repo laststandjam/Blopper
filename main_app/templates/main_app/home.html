@@ -13,8 +13,7 @@
 {% endfor %}
 
 <h3>Top Words</h3>
-{% for blop in articles%} 
-{if forloop.counter < 6} 
+{%for blop in articles%} {if forloop.counter < 6} 
 {{blop.title}} 
- 
-{%endblock %}
+{% endfor %}
+ {%endblock %}
