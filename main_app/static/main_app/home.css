@@ -1,8 +1,10 @@
 .container {
-    grid-template-columns: 10% 20% 20% 20% 20% 10%;
-    grid-template-rows: 7% 10% 25% 25% 25% 8%; 
+    grid-template-columns: [narrowcol1] 10% [col2] 20% [col3] 20% [col4]20% [col5] 20%  [narrowcol6]10%;
+    grid-template-rows: [top nav] 7% [banner] 10% [vid] 25% [img] 25% [blog] 25% [foot] 8%; 
 }
-.index-header {
+#title {
     color: brown;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 85px;
 }
 
