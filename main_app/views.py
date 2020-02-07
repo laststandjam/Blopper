@@ -5,9 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Blop
 
 def home(request):
-  videos = Blop.objects.filter(video != None)
-  pictures = Blop.objects.filter(image != None)
-  articles = Blop.objects.filter(article != None)
+  videos = Blop.objects.exclude(video != null)
+  pictures = Blop.objects.exclude(image != None)
+  articles = Blop.objects.exclude(article != None)
   return render(request, 'main_app/home.html',{'videos': videos,
    'pictures':pictures,
    'articles':articles,
