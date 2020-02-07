@@ -1,19 +1,23 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'main_app/user.css' %}">
+
 {% extends 'main_app/base.html' %}
 {% block content %}
-        <section class="section_one">
+        <div class="container_three">
             <a href="add.html">ADD BLOP</a>
-            <br></br>
-            <h1>My Blops</h1>
-           <article>
-               <h2>Videos</h2>
-           </article>
-           <article>
+                    <br></br>
+        <div class="row">
+            <div class="column">
+                <h1>My Blops</h1>
+                <h2>Videos</h2>
+                    <img class="blop cursor" src="{% %}" id="v" style="width:100%" onclick="currentSlide(1)" alt="blop 1">
+                </div>
+            <div class="column">
                 <h2>Images</h2>
-           </article>
-           <article>
+                    <img class="blop cursor" src="{% %}" id="v" style="width:100%" onclick="currentSlide(2)" alt="blop 2">
+                </div>
+            <div class="column">
                 <h2>Articles</h2>
-           </article>
-        </section>
+                    <img class="blop cursor" src="{% %}" id="a" style="width:100%" onclick="currentSlide(3)" alt="blop 3">
+                </div>
 {% endblock %}
