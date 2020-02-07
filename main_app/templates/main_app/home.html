@@ -1,7 +1,10 @@
-{% extends 'main_app/base.html' %} {% block content %}
-
-<h1 class="index-header">BLOPPERS</h1>
-<h1>This is nonsense</h1>
+{% extends 'main_app/base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main_app/home.css' %}">
+<div class="container">
+    <h1 id="title">BLOPPERS</h1>
+</div>   
 <h3>Top Videos</h3>
 {% for blop in videos %} {if forloop.counter < 6}
 <video src="{{blop.video.url}}"></video>
@@ -12,8 +15,8 @@
 <img src="{{ blop.image.url }}" />
 {% endfor %}
 
-<h3>TopS WORDS</h3>
+<h3>Top WORDS</h3>
 {%for blop in articles%} {if forloop.counter < 6} 
 {{blop.title}} 
 {%endfor%}
- {%endblock %}
+{% endblock %}
