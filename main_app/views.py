@@ -2,25 +2,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Blop
+from .models import Blop, Comment
+from .forms import CommentForm
 
 def home(request):
-  videos = Blop.objects.exclude(video = None)
-  pictures = Blop.objects.exclude(image = None)
-  articles = Blop.objects.exclude(article = "")
-  return render(request, 'main_app/home.html',{'videos': videos,
-   'pictures':pictures,
-   'articles':articles,
-   })
+  return render(request, 'main_app/home.html')
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
   return render(request, 'main_app/detail.html', {
-    'title': blop.title,
-    'video': blop.video,
-    'image': blop.image,
-    'article': blop.article,
-    'likes': blop.likes,
+    'blop': blop
   })
 
 def signup(request):
@@ -45,3 +36,12 @@ class BlopCreate(CreateView):
   def form_valid(self, form):
     form.instance.creator = self.request.user
     return super().form_valid(form)
+
+def comment_create(request, blop_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.creator = request.user
+    new_comment.blop = Blop.objects.get(id=blop_id)
+    new_comment.save()
+  return redirect('main_app:blop_details', blop_id=blop_id)
