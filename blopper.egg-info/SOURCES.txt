@@ -7,4 +7,5 @@ blopper/wsgi.py
 blopper.egg-info/PKG-INFO
 blopper.egg-info/SOURCES.txt
 blopper.egg-info/dependency_links.txt
+blopper.egg-info/requires.txt
 blopper.egg-info/top_level.txt
