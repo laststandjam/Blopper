@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Blop
+from .models import Blop, Comment
+from .forms import CommentForm
 
 def home(request):
-  # more nonsense
   videos = Blop.objects.exclude(video = None)
   pictures = Blop.objects.exclude(image = None)
   articles = Blop.objects.exclude(article = "")
@@ -16,12 +16,10 @@ def home(request):
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
+  comments = blop.comment_set.all()
   return render(request, 'main_app/detail.html', {
-    'title': blop.title,
-    'video': blop.video,
-    'image': blop.image,
-    'article': blop.article,
-    'likes': blop.likes,
+    'blop': blop,
+    'comments': comments
   })
 
 def signup(request):
@@ -39,10 +37,17 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 class BlopCreate(CreateView):
-  #add something that checks if a user is logged in.
-  #if user is not logged in they are redirected to the login page
   model = Blop
   fields = ['title', 'video', 'image', 'article']
   def form_valid(self, form):
     form.instance.creator = self.request.user
     return super().form_valid(form)
+
+def comment_create(request, blop_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.creator = request.user
+    new_comment.blop = Blop.objects.get(id=blop_id)
+    new_comment.save()
+  return redirect('main_app:blop_details', blop_id=blop_id)
