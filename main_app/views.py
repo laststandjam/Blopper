@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Blop
 
 def home(request):
-  # this is nonsense
+  # more nonsense
   videos = Blop.objects.exclude(video = None)
   pictures = Blop.objects.exclude(image = None)
   articles = Blop.objects.exclude(article = "")
