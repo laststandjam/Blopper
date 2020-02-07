@@ -7,12 +7,24 @@ from .forms import CommentForm
 
 def home(request):
   videos = Blop.objects.exclude(video = None)
-  pictures = Blop.objects.exclude(image = None)
+  images = Blop.objects.exclude(image = None)
   articles = Blop.objects.exclude(article = "")
   return render(request, 'main_app/home.html',{'videos': videos,
-   'pictures':pictures,
+   'images':images,
    'articles':articles,
    })
+
+def blopper(request):
+  user_content = Blop.objects.get(creator=request.user)
+  # videos = user_content.exclude(video = None)
+  # images = user_content.exclude(image = None)
+  # articles = user_content.exclude(article = "")
+  return render(request, 'main_app/user.html', {
+    'user': user_content,
+    'videos': ["https://youtu.be/ismkVNt1PVE", "https://youtu.be/E_Ub0MjJiWU", "https://youtu.be/lEaI-A-6kfQ"],
+    'images': ["https://www.fosi.org/media/images/funny-game-of-thrones-memes-coverimage.width-800.jpg","https://d.newsweek.com/en/full/1176971/obesity-meme.png","https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/3ORNMTD4CE3EBAGAWDAHECMM4E.jpg&w=767"],
+    'articles': ["my first article", "my second article", 'my third article'],
+    })
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
