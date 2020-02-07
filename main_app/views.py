@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Blop
+from .models import Blop, Comment
 
 def home(request):
   return render(request, 'main_app/home.html')
@@ -39,3 +39,45 @@ class BlopCreate(CreateView):
   def form_valid(self, form):
     form.instance.creator = self.request.user
     return super().form_valid(form)
+
+def comment_create(request, blop_id):
+  form = FeedingForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_feeding = form.save(commit=False)
+    new_feeding.finch_id = finch_id
+    new_feeding.save()
+  return redirect('main_app:detail', finch_id=finch_id)
+
+class CommentCreate(CreateView):
+  model = Comment
+  fields = ['content']
+  def form_valid(self, form):
+    form.instance.creator = self.request.user
+    return super().form_valid(form)
+
+
+
+
+class CommentUpdate(UpdateView):
+  model = Comment
+  context_object_name = 'comment'
+  fields = ['content']
+
+class FinchDelete(DeleteView):
+  model = Comment
+  success_url = '/'
+
+def comment_delete(request, blop_id):
+  # create the ModelForm using the data in request.POST
+  form = FeedingForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_feeding = form.save(commit=False)
+    new_feeding.finch_id = finch_id
+    new_feeding.save()
+  return redirect('main_app:detail', finch_id=finch_id)

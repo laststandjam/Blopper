@@ -27,7 +27,7 @@ class Blopper(models.Model):
     instance.blopper.save()
     
 
-class Comments(models.Model):
+class Comment(models.Model):
   creator = models.ForeignKey(User, on_delete=models.CASCADE)
   content = models.TextField(max_length= 300)
   created_at = models.DateTimeField(auto_now_add=True)
