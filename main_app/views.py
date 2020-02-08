@@ -7,10 +7,10 @@ from .forms import CommentForm
 
 def home(request):
   videos = Blop.objects.exclude(video = None)
-  pictures = Blop.objects.exclude(image = None)
+  images = Blop.objects.exclude(image = None)
   articles = Blop.objects.exclude(article = "")
   return render(request, 'main_app/home.html',{'videos': videos,
-   'pictures':pictures,
+   'images':images,
    'articles':articles,
    })
 
