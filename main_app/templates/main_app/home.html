@@ -11,15 +11,16 @@
 </div>
 
 <h3>Top Videos</h3>
-{% for blop in videos %} {if forloop.counter < 6}
+{% for blop in videos|slice:"0:5" %}
+
 <video src="{{blop.video.url}}"></video>
 {% endfor %}
 
 <h3>Top Pictures</h3>
-{%for blop in images%} {if forloop.counter < 6}
+{% for blop in images|slice:"0:5" %}
 <img src="{{ blop.image.url }}" />
 {% endfor %}
 
 <h3>Top WORDS</h3>
-{%for blop in articles%} {if forloop.counter < 6} {{blop.title}} {%endfor%} 
+{% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
 {% endblock %}
