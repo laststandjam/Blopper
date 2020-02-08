@@ -15,10 +15,11 @@
               <nav>
                 <div class="nav-wrapper">
                   <ul>
-                    <li>Vid Blops</a></li>
-                    <li>Pic Blops</a></li>
-                    <li>Word Blops</a></li>
-                    <li>Search</a></li>
+                    <li><a href="{% url 'vid' %}">Vid Blops</a></li>
+                    <li><a href="{% url 'pic' %}">Pic Blops</a></li>
+                    <li><a href="{% url 'word' %}">Word Blops</a></li>
+                    <li><a href="{% url 'add' %}">My Blops</a></li>
+                    <li><a>Search</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                   {% else %}
