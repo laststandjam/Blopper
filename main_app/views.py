@@ -5,6 +5,23 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Blop, Comment
 from .forms import CommentForm
 
+#VIEWS: 
+
+def home(request):
+  return render(request,'home.html')
+
+def videos(request):
+  return render(request, 'videos.html')
+
+def images(request):
+  return render(request, 'images.html')
+
+def articles(request):
+  return render(request, 'articles.html')
+
+def user(request):
+  return render(request, 'user.html')
+
 def home(request):
   videos = Blop.objects.exclude(video = None)
   pictures = Blop.objects.exclude(image = None)
