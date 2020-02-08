@@ -14,6 +14,8 @@ class Blop(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   def get_absolute_url(self):
     return reverse('main_app:home')
+  class Meta():
+    ordering = ['-likes']
 
 class Blopper(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
