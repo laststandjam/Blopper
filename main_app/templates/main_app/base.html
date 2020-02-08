@@ -15,9 +15,11 @@
               <nav>
                 <div class="nav-wrapper">
                   <ul>
-                    <li>Vid Blops</a></li>
-                    <li>Pic Blops</a></li>
-                    <li>Word Blops</a></li>
+                    <li><a href="{% url 'main_app:home' %}">Home</a></li>
+                    <li><a href="{% url 'main_app:videos' %}">Vid Blops</a></li>
+                    <li><a href="{% url 'main_app:images' %}">Pic Blops</a></li>
+                    <li><a href="{% url 'main_app:articles' %}">Word Blops</a></li>
+                    <li><a href="{% url 'main_app:user' %}">Add Blop</a></li>
                     <li>Search</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -38,3 +40,4 @@
   </div>
 </body>
 </html>
+
