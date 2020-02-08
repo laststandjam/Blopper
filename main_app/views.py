@@ -7,17 +7,17 @@ from .forms import CommentForm
 
 #VIEWS: 
 
-
-
 def videos(request):
-  return render(request, 'videos.html')
+  return render(request, 'main_app/videos.html')
 
 def images(request):
-  return render(request, 'images.html')
+  return render(request, 'main_app/images.html')
 
 def articles(request):
-  return render(request, 'articles.html')
+  return render(request, 'main_app/articles.html')
 
+def user(request):
+  return render(request, 'main_app/user.html')
 
 
 def home(request):
