@@ -19,6 +19,7 @@ def articles(request):
 def user(request):
   return render(request, 'main_app/user.html')
 
+
 def home(request):
   videos = Blop.objects.exclude(video = None)
   images = Blop.objects.exclude(image = None)
