@@ -1,6 +1,6 @@
 {% extends 'main_app/base.html' %} {% block content %}
 {% load static %}
-
+{% load embed_video_tags %}
 <link
   rel="stylesheet"
   type="text/css"
@@ -13,12 +13,12 @@
 <h3>Top Videos</h3>
 {% for blop in videos|slice:"0:5" %}
 
-<video src="{{blop.video}}"></video>
+{% video blop.video 'small' %}
 {% endfor %}
 
 <h3>Top Pictures</h3>
 {% for blop in images|slice:"0:5" %}
-<img src="{{ blop.image}}">
+<img src="{{ blop.image}}" width="300" length="200">
 {% endfor %}
 
 <h3>Top WORDS</h3>
