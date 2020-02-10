@@ -18,7 +18,10 @@
   {% for comment in comments %}
     <p>{{comment}}</p>
     {% if comment.creator == user %}
-      <a href="{% url 'main_app:delete_comment' blop.id comment.id %}">delete</a>
+      <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete" class="btn">
+      </form>
     {% endif %}
   {% endfor %}
   
