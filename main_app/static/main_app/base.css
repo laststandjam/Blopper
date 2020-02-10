@@ -2,20 +2,37 @@
     background: linear-gradient(90deg, rgb(255, 212,0.3) 50%, rgb(0,0,0,0) 50%, rgb(255, 177, 10) 0), #ccc;
     background-size:50px auto;
     }
-    .nav-wrapper {
-        background-color: transparent;
-        font-family: 'Bungee Shade', cursive;
-        display: inline-block;
-    } 
-    li {
-        width: 200px;
-        min-height: 25px;
-        border: none;
-        display: -moz-inline-stack;
-        display: inline-block;
-        vertical-align: top;
-        margin: 5px;
-        zoom: 1;
-        *display: inline;
-        _height: 25px;
+.nav-wrapper {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    background-color: rgb(255, 177, 10);
+    font-family: 'Bungee Shade', cursive;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    zoom: 1;
+    text-align: justify;
+}
+/* #nav-ul {
+    margin: 0 auto;
+    padding: 0;
+    display: inline-block;
+} */
+li {
+    min-width: auto;
+    height: 40px;
+    border: none;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    font-size: 20px;
+    /* padding: 5px */
+    /* zoom: 1; */
+    /* *display: inline;
+    _height: 30px; */
+    /* align-content: center; */
 }

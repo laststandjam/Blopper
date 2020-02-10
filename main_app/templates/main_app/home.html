@@ -6,21 +6,22 @@
   type="text/css"
   href="{% static 'main_app/home.css' %}"
 />
-<div class="container">
+<div class="wrapper">
+<div>
   <h1 id="title">BLOPPERS</h1>
 </div>
-
-<h3>Top Videos</h3>
+<h3 id="videos">Top Videos</h3>
 {% for blop in videos|slice:"0:5" %}
 
 <video src="{{blop.video.url}}"></video>
 {% endfor %}
 
-<h3>Top Pictures</h3>
+<h3 id="pictures">Top Pictures</h3>
 {% for blop in images|slice:"0:5" %}
 <img src="{{ blop.image.url }}" />
 {% endfor %}
 
-<h3>Top WORDS</h3>
+<h3 id="words">Top WORDS</h3>
 {% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
+</div>
 {% endblock %}
