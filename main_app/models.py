@@ -36,3 +36,5 @@ class Comment(models.Model):
   content = models.TextField(max_length= 300)
   blop = models.ForeignKey(Blop, on_delete=models.CASCADE)
   created_at = models.DateTimeField(auto_now_add=True)
+  def __str__(self):
+    return f'{self.content}'
