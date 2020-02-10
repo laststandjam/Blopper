@@ -16,43 +16,13 @@
   </form>
   
   {% for comment in comments %}
-    <div class="comments_container">
-      <p class="comments">{{comment}}</p>
-      {% if comment.creator == user %}
-        <form class="edit_form" action="{% url 'main_app:edit_comment' blop.id comment.id %}" method="POST">
-          {% csrf_token %}
-        </form>
-          <button class='edit_btn'>Edit</button>
-        <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
-          {% csrf_token %}
-          <input type="submit" value="Delete" class="btn">
-        </form>
-      {% endif %}
-    </div>
+    <p class="comments">{{comment}}</p>
+    {% if comment.creator == user %}
+      <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete" class="btn">
+      </form>
+    {% endif %}
   {% endfor %}
 
-<script defer>
-  let comments = document.querySelectorAll('.comments')
-  let editBtns = document.querySelectorAll('.edit_btn')
-  let editForms = document.querySelectorAll('.edit_form')
-  let containers = document.querySelectorAll('.comments_container')
-  let inp = document.createElement('input')
-  let text = document.createElement('input')
-  inp.setAttribute('type', 'submit')
-  inp.setAttribute('value', 'Submit')
-  inp.setAttribute('class', 'btn')
-  text.setAttribute('type', 'text')
-  text.setAttribute('name', 'comment')
-
-  for(let i = 0; i < editBtns.length; i++){
-    editBtns[i].addEventListener("click", function() {
-      let comment = comments[i].textContent
-      comments[i].remove()
-      text.setAttribute('placeholder', comment)
-      editForms[i].appendChild(inp)
-      containers[i].insertBefore(text, containers[i].firstChild);
-    }
-  );
-}
-</script>
 {% endblock %}
