@@ -15,12 +15,20 @@
               <nav>
                 <div class="nav-wrapper">
                   <ul>
+<<<<<<< HEAD
                     <li><a href="{% url 'main_app:home' %}">Home</a></li>
                     <li><a href="{% url 'main_app:videos' %}">Vid Blops</a></li>
                     <li><a href="{% url 'main_app:images' %}">Pic Blops</a></li>
                     <li><a href="{% url 'main_app:articles' %}">Word Blops</a></li>
                     
                     <li>Search</a></li>
+=======
+                    <li><a href="{% url 'vid' %}">Vid Blops</a></li>
+                    <li><a href="{% url 'pic' %}">Pic Blops</a></li>
+                    <li><a href="{% url 'word' %}">Word Blops</a></li>
+                    <li><a href="{% url 'add' %}">My Blops</a></li>
+                    <li><a>Search</a></li>
+>>>>>>> 3175662ab065ba3684fc12ebcc6e0f2f58c18c00
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                   {% else %}
