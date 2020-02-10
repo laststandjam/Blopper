@@ -3,14 +3,13 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'main_app/user.css' %}">
      <div class="container_three">
-          <a href="/blops/create.html">ADD BLOP</a>
+          <a href="{% url 'main_app:create_blop' %}">ADD BLOP</a>
                <h1>My Blops</h1>
           <br>
           <br>
      <h2>Videos</h2>
-          {% for blop_video in blop_list_set.all %}
+          {% for video in videos %}
           {% endfor %}
-          <a href="{% url 'main_app:blop_details' blop.id %}"></a>
      <div class="row">
           <div class="column">
                <img class="blop cursor" src="" id="v" style="width:100%" onclick="currentSlide(1)" alt="blop_video_1">
@@ -24,7 +23,7 @@
           <br>
           <br>
      <h2>Images</h2>
-          {% for blop_image in blop_list_set.all %}
+          {% for image in images %}
           {% endfor %}
      <div class="row">
           <div class="column">
@@ -39,7 +38,7 @@
           <br>
           <br>
      <h2>Articles</h2>
-          {% for blop_article in blop_list_set.all %}
+          {% for article in articles %}
           {% endfor %}
      <div class="row">
           <div class="column">
