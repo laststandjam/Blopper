@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Blop, Comment
-from .forms import CommentForm
+from .forms import CommentForm, VideoForm, ImageForm, ArticleForm
 
 def videos(request):
   videos = Blop.objects.exclude(video = None)
@@ -61,12 +61,47 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-class BlopCreate(CreateView):
-  model = Blop
-  fields = ['title', 'video', 'image', 'article']
-  def form_valid(self, form):
-    form.instance.creator = self.request.user
-    return super().form_valid(form)
+def blop_create(request):
+  return render(request, 'main_app/blop_create.html')
+
+def blop_create_video(request):
+  form = VideoForm(request.POST)
+  if form.is_valid():
+    blop = form.save(commit=False)
+    blop.creator = request.user
+    blop.save()
+    return redirect('main_app:blopper')
+  else:
+    return render(request, 'main_app/blop_create.html', {
+      'blop': 'video',
+      'form': VideoForm()
+      })
+
+def blop_create_image(request):
+  form = ImageForm(request.POST)
+  if form.is_valid():
+    blop = form.save(commit=False)
+    blop.creator = request.user
+    blop.save()
+    return redirect('main_app:blopper')
+  else:
+    return render(request, 'main_app/blop_create.html', {
+      'blop': 'image',
+      'form': ImageForm()
+      })
+
+def blop_create_article(request):
+  form = ArticleForm(request.POST)
+  if form.is_valid():
+    blop = form.save(commit=False)
+    blop.creator = request.user
+    blop.save()
+    return redirect('main_app:blopper')
+  else:
+    return render(request, 'main_app/blop_create.html', {
+      'blop': 'video',
+      'form': ArticleForm()
+      })
 
 def comment_create(request, blop_id):
   form = CommentForm(request.POST)

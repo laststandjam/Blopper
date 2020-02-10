@@ -1,0 +1,28 @@
+{% extends 'main_app/base.html' %}
+{% block content %}
+  <h1>Select a Blop to Drop</h1>
+  {% if not blop %}
+    <a href="{% url 'main_app:create_blop_video' %}">Video</a>
+    <a href="{% url 'main_app:create_blop_image' %}">Image</a>
+    <a href="{% url 'main_app:create_blop_article' %}">Article</a>
+  {% elif blop == 'video' %}
+    <form action="{% url 'main_app:create_blop_video' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_table }}
+      <input type="submit" value="Submit" class="btn" />
+    </form>
+  {% elif blop == 'image' %}
+    <form action="{% url 'main_app:create_blop_image' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_table }}
+      <input type="submit" value="Submit" class="btn" />
+    </form>
+  {% elif blop == 'article' %}
+    <form action="{% url 'main_app:create_blop_article' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_table }}
+      <input type="submit" value="Submit" class="btn" />
+    </form>
+  {% endif %}
+
+  {% endblock %}
