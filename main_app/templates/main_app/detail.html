@@ -14,9 +14,10 @@
     <input type="text" name="content">
     <input type="submit" value="Submit Comment" class="btn">
   </form>
-
+  
   {% for comment in comments %}
-    <p>{{comment}}</p>
+  <p>{{comment}}</p>
+  <a href="{% url 'main_app:delete_comment' blop.id comment.id %}">delete</a>
   {% endfor %}
   
 {% endblock %}
