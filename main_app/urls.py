@@ -14,6 +14,4 @@ urlpatterns = [
   path('articles/', views.articles, name='articles'),
   path('videos/', views.videos, name='videos'),
   path('images/', views.images, name='images'),
-  # path('user/', views.user, name='user'),
 ]
-#main_app/templates/main_app/articles.html

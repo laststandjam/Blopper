@@ -5,29 +5,27 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Blop, Comment
 from .forms import CommentForm
 
-#VIEWS: 
-
 def videos(request):
-  return render(request, 'main_app/videos.html')
+  videos = Blop.objects.exclude(video = None)
+  return render(request, 'main_app/videos.html', {'videos': videos})
 
 def images(request):
-  return render(request, 'main_app/images.html')
+  images = Blop.objects.exclude(image = None)
+  return render(request, 'main_app/images.html', {'images': images})
 
 def articles(request):
-  return render(request, 'main_app/articles.html')
-
-def user(request):
-  return render(request, 'main_app/user.html')
-
+  articles = Blop.objects.exclude(article = "")
+  return render(request, 'main_app/articles.html', {'articles': articles})
 
 def home(request):
   videos = Blop.objects.exclude(video = None)
   images = Blop.objects.exclude(image = None)
   articles = Blop.objects.exclude(article = "")
-  return render(request, 'main_app/home.html',{'videos': videos,
-   'images':images,
-   'articles':articles,
-   })
+  return render(request, 'main_app/home.html', {
+    'videos': videos,
+    'images':images,
+    'articles':articles,
+  })
 
 def blopper(request):
   user_content = Blop.objects.filter(creator=request.user)
@@ -39,7 +37,7 @@ def blopper(request):
     'videos': videos,
     'images': images,
     'articles': articles,
-    })
+  })
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
