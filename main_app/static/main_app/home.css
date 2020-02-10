@@ -1,10 +1,59 @@
-.container {
-    grid-template-columns: [narrowcol1] 10% [col2] 20% [col3] 20% [col4]20% [col5] 20%  [narrowcol6]10%;
-    grid-template-rows: [top nav] 7% [banner] 10% [vid] 25% [img] 25% [blog] 25% [foot] 8%; 
+.stripes {
+    background: linear-gradient(90deg, rgb(255, 212,0.3) 50%, rgb(0,0,0,0) 50%, rgb(255, 177, 10) 0), #ccc;
+    background-size:50px auto;
+    }
+.wrapper {
+    display: grid;
+    height: 100vh;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 3fr 3fr 3fr 1fr;
 }
+li {
+    min-width: auto;
+    height: 40px;
+    border: none;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    font-size: 20px;
+    /* padding: 5px */
+    /* zoom: 1; */
+    /* *display: inline;
+    _height: 30px; */
+    /* align-content: center; */
+}
+#header {
+
+}
+
 #title {
     color: brown;
     font-family: 'Bungee Shade', cursive;
-    font-size: 85px;
+    font-size: 55px;
+    grid-column: 2 / 4; 
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+#videos {
+    font-family: 'Bungee Shade', cursive;
+    grid-column: 2 / 3; 
+    grid-row: 2 / 3;
+}
+
+#pictures {
+    font-family: 'Bungee Shade', cursive;
+    grid-column: 2 / 3; 
+    grid-row: 3 / 4;
+}
+
+#words {
+    font-family: 'Bungee Shade', cursive;
+    grid-column: 2 / 3; 
+    grid-row: 4 / 5;
 }
 
