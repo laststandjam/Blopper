@@ -84,4 +84,10 @@ def comment_delete(request, blop_id, comment_id):
   return redirect('main_app:blop_details', blop_id=blop_id)
 
 def comment_edit(request, blop_id, comment_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    comment = Comment.objects.get(id=comment_id)
+    if comment.creator == request.user:
+      comment.content = form['content'].value()
+      comment.save()
   return redirect('main_app:blop_details', blop_id=blop_id)
