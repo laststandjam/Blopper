@@ -103,13 +103,6 @@ def blop_create_article(request):
       'form': ArticleForm()
       })
 
-class BlopCreate(CreateView):
-  model = Blop
-  fields = ['title', 'video', 'image', 'article']
-  def form_valid(self, form):
-    form.instance.creator = self.request.user
-    return super().form_valid(form)
-
 def comment_create(request, blop_id):
   form = CommentForm(request.POST)
   if form.is_valid():
