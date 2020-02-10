@@ -16,8 +16,10 @@
   </form>
   
   {% for comment in comments %}
-  <p>{{comment}}</p>
-  <a href="{% url 'main_app:delete_comment' blop.id comment.id %}">delete</a>
+    <p>{{comment}}</p>
+    {% if comment.creator == user %}
+      <a href="{% url 'main_app:delete_comment' blop.id comment.id %}">delete</a>
+    {% endif %}
   {% endfor %}
   
 {% endblock %}
