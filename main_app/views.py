@@ -5,26 +5,39 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Blop, Comment
 from .forms import CommentForm
 
+def videos(request):
+  videos = Blop.objects.exclude(video = None)
+  return render(request, 'main_app/videos.html', {'videos': videos})
+
+def images(request):
+  images = Blop.objects.exclude(image = None)
+  return render(request, 'main_app/images.html', {'images': images})
+
+def articles(request):
+  articles = Blop.objects.exclude(article = "")
+  return render(request, 'main_app/articles.html', {'articles': articles})
+
 def home(request):
   videos = Blop.objects.exclude(video = None)
   images = Blop.objects.exclude(image = None)
   articles = Blop.objects.exclude(article = "")
-  return render(request, 'main_app/home.html',{'videos': videos,
-   'images':images,
-   'articles':articles,
-   })
+  return render(request, 'main_app/home.html', {
+    'videos': videos,
+    'images':images,
+    'articles':articles,
+  })
 
 def blopper(request):
-  user_content = Blop.objects.get(creator=request.user)
-  # videos = user_content.exclude(video = None)
-  # images = user_content.exclude(image = None)
-  # articles = user_content.exclude(article = "")
+  user_content = Blop.objects.filter(creator=request.user)
+  videos = user_content.exclude(video = None)
+  images = user_content.exclude(image = None)
+  articles = user_content.exclude(article = "")
   return render(request, 'main_app/user.html', {
     'user': user_content,
-    'videos': ["https://youtu.be/ismkVNt1PVE", "https://youtu.be/E_Ub0MjJiWU", "https://youtu.be/lEaI-A-6kfQ"],
-    'images': ["https://www.fosi.org/media/images/funny-game-of-thrones-memes-coverimage.width-800.jpg","https://d.newsweek.com/en/full/1176971/obesity-meme.png","https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/3ORNMTD4CE3EBAGAWDAHECMM4E.jpg&w=767"],
-    'articles': ["my first article", "my second article", 'my third article'],
-    })
+    'videos': videos,
+    'images': images,
+    'articles': articles,
+  })
 
 def blop_details(request, blop_id):
   blop = Blop.objects.get(id=blop_id)
@@ -62,4 +75,13 @@ def comment_create(request, blop_id):
     new_comment.creator = request.user
     new_comment.blop = Blop.objects.get(id=blop_id)
     new_comment.save()
+  return redirect('main_app:blop_details', blop_id=blop_id)
+
+def comment_delete(request, blop_id, comment_id):
+  comment = Comment.objects.get(id=comment_id)
+  if comment.creator == request.user:
+    comment.delete()
+  return redirect('main_app:blop_details', blop_id=blop_id)
+
+def comment_edit(request, blop_id, comment_id):
   return redirect('main_app:blop_details', blop_id=blop_id)
