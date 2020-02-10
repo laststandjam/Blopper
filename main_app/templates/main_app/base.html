@@ -10,12 +10,13 @@
   <title>Bloppers</title>
 </head>
 <body class="stripes">
-  <div class="container">
-          <header class="navbar-fixed">
-              <nav>
-                <div class="nav-wrapper">
-                  <ul>
+  <div>
+          <header id="header">
+              <div class="nav-wrapper">
+                <nav>
+                  <ul class="menu">
                     <li><a href="{% url 'main_app:home' %}">Home</a></li>
+                    <li><a href="{% url 'main_app:blopper' %}">Ur A Blopper</a></li>
                     <li><a href="{% url 'main_app:videos' %}">Vid Blops</a></li>
                     <li><a href="{% url 'main_app:images' %}">Pic Blops</a></li>
                     <li><a href="{% url 'main_app:articles' %}">Word Blops</a></li>
@@ -28,8 +29,8 @@
                     <li><a href="{% url 'login' %}">Log In</a></li>
                   {% endif %}
                   </ul>
-                </div>
-              </nav>
+                </nav>
+              </div>
           </header>
   <main>
     {% block content %}
