@@ -14,9 +14,15 @@
     <input type="text" name="content">
     <input type="submit" value="Submit Comment" class="btn">
   </form>
-
-  {% for comment in comments %}
-    <p>{{comment}}</p>
-  {% endfor %}
   
+  {% for comment in comments %}
+    <p class="comments">{{comment}}</p>
+    {% if comment.creator == user %}
+      <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete" class="btn">
+      </form>
+    {% endif %}
+  {% endfor %}
+
 {% endblock %}

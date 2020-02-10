@@ -76,3 +76,12 @@ def comment_create(request, blop_id):
     new_comment.blop = Blop.objects.get(id=blop_id)
     new_comment.save()
   return redirect('main_app:blop_details', blop_id=blop_id)
+
+def comment_delete(request, blop_id, comment_id):
+  comment = Comment.objects.get(id=comment_id)
+  if comment.creator == request.user:
+    comment.delete()
+  return redirect('main_app:blop_details', blop_id=blop_id)
+
+def comment_edit(request, blop_id, comment_id):
+  return redirect('main_app:blop_details', blop_id=blop_id)
