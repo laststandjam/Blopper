@@ -11,6 +11,7 @@ urlpatterns = [
   path('blops/create', views.BlopCreate.as_view(), name='create_blop'),
   path('blops/<int:blop_id>/comment', views.comment_create, name='create_comment'),
   path('blops/<int:blop_id>/comment/<int:comment_id>/delete', views.comment_delete, name='delete_comment'),
+  path('blops/<int:blop_id>/comment/<int:comment_id>/edit', views.comment_edit, name='edit_comment'),
   path('blopper/', views.blopper, name='blopper'),
   path('articles/', views.articles, name='articles'),
   path('videos/', views.videos, name='videos'),

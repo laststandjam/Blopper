@@ -18,6 +18,10 @@
   {% for comment in comments %}
     <p>{{comment}}</p>
     {% if comment.creator == user %}
+      <form action="{% url 'main_app:edit_comment' blop.id comment.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Edit" class="btn">
+      </form>
       <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
         {% csrf_token %}
         <input type="submit" value="Delete" class="btn">
