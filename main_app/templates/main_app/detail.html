@@ -38,9 +38,9 @@
         {% csrf_token %}
       </form>
         <button class='edit_btn'>Edit</button>
-      <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
+      <form class="delete-form" action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Delete" class="btn">
+        <input type="submit" value="Delete" class="btn delete">
       </form>
     {% endif %}
   {% endfor %}
