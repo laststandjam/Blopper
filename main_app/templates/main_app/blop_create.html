@@ -1,10 +1,15 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main_app/blop_create.css' %}">
+
   <h1>Select a Blop to Drop</h1>
   {% if not blop %}
-    <a href="{% url 'main_app:create_blop_video' %}">Video</a>
-    <a href="{% url 'main_app:create_blop_image' %}">Image</a>
-    <a href="{% url 'main_app:create_blop_article' %}">Article</a>
+    <div id="select_blop">
+      <a href="{% url 'main_app:create_blop_video' %}">Video</a>
+      <a href="{% url 'main_app:create_blop_image' %}">Image</a>
+      <a href="{% url 'main_app:create_blop_article' %}">Article</a>
+    </div>
   {% elif blop == 'video' %}
     <form action="{% url 'main_app:create_blop_video' %}" method="post">
       {% csrf_token %}
