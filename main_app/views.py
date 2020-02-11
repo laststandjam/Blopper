@@ -4,6 +4,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Blop, Comment
 from .forms import CommentForm, VideoForm, ImageForm, ArticleForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def videos(request):
   videos = Blop.objects.exclude(video = None)
@@ -27,6 +29,7 @@ def home(request):
     'articles':articles,
   })
 
+@login_required
 def blopper(request):
   user_content = Blop.objects.filter(creator=request.user)
   videos = user_content.exclude(video = None)
@@ -61,9 +64,11 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+@login_required
 def blop_create(request):
   return render(request, 'main_app/blop_create.html')
 
+@login_required
 def blop_create_video(request):
   form = VideoForm(request.POST)
   if form.is_valid():
@@ -77,6 +82,7 @@ def blop_create_video(request):
       'form': VideoForm()
       })
 
+@login_required
 def blop_create_image(request):
   form = ImageForm(request.POST)
   if form.is_valid():
@@ -90,6 +96,7 @@ def blop_create_image(request):
       'form': ImageForm()
       })
 
+@login_required
 def blop_create_article(request):
   form = ArticleForm(request.POST)
   if form.is_valid():
@@ -103,6 +110,7 @@ def blop_create_article(request):
       'form': ArticleForm()
       })
 
+@login_required
 def comment_create(request, blop_id):
   form = CommentForm(request.POST)
   if form.is_valid():
@@ -112,12 +120,14 @@ def comment_create(request, blop_id):
     new_comment.save()
   return redirect('main_app:blop_details', blop_id=blop_id)
 
+@login_required
 def comment_delete(request, blop_id, comment_id):
   comment = Comment.objects.get(id=comment_id)
   if comment.creator == request.user:
     comment.delete()
   return redirect('main_app:blop_details', blop_id=blop_id)
 
+@login_required
 def comment_edit(request, blop_id, comment_id):
   form = CommentForm(request.POST)
   if form.is_valid():
