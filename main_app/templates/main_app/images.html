@@ -1,9 +1,19 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'main_app/images.css' %}">
-<div class="container">
-<h1>IMAGES HERE</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'main_app/videos_images.css' %}">
+
+<h1>IMAGES</h1>
+<div class="center">
+  {% for blop in images %}
+    <a href="{% url 'main_app:blop_details' blop.id %}"><div class="card">
+      <div class="img-container">
+        <img src={{ blop.image }} />
+      </div>
+      <p>{{blop.title}}</p>
+    </div></a>
+  {% endfor %}
+</div>
 
 {% endblock %}
 
