@@ -1,9 +1,43 @@
 {% extends 'main_app/base.html' %} {% block content %}
 {% load static %}
+{% load embed_video_tags %}
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'main_app/home.css' %}"
 />
+  <h1>BLOPPERS</h1>
+  <h3>REIGN SUPREME VID</h3>
+    {% for blop in videos %}
+        {% video blop.video as my_video %}
+        <a href="{% url 'main_app:blop_details' blop.id %}"><div class="card">
+            <div class="img-container">
+            <img src={{ my_video.thumbnail }} />
+            </div>
+            <p>{{blop.title}}</p>
+        </div></a>
+        {% endvideo %}
+    {% endfor %}
+
+<h3>REIGN SUPREME PIC</h3>
+{% for blop in images %}
+    <a href="{% url 'main_app:blop_details' blop.id %}"><div class="card">
+      <div class="img-container">
+        <img src={{ blop.image }} />
+      </div>
+      <p>{{blop.title}}</p>
+    </div></a>
+  {% endfor %}
+
+
+<h3>Top Blop Story</h3>
+{% for blop in articles%}
+<div class="acard">
+    <a href="{% url 'main_app:blop_details' blop.id %}"><h3>{{blop.title}}</h3></a>
+    <p>{{blop.article}}</p>
+
+</div>
+
+{%endfor%}
 
 {% endblock %}
