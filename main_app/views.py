@@ -107,7 +107,7 @@ def blop_create_article(request):
     return redirect('main_app:blopper')
   else:
     return render(request, 'main_app/blop_create.html', {
-      'blop': 'video',
+      'blop': 'article',
       'form': ArticleForm()
       })
 
