@@ -1,14 +1,26 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
 {% load embed_video_tags %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main_app/detail.css' %}">
 
-  <h1>{{blop.title}}</h1>
+
   {% if blop.video %}
-    {% video blop.video 'small' %}
+    <h1>Video</h1>
+    <h2>{{blop.title}}</h2>
+    <div id="vid-container">
+      {% video blop.video '100% x 100%' %}
+    </div>
   {% elif blop.image %}
-
+    <h1>Image</h1>
+    <h2>{{blop.title}}</h2>
+    <div id="image-container">
+      <img src={{ blop.image }} />
+    </div>
   {% elif blop.article %}
-
+    <h1>Article</h1>
+    <h2>{{blop.title}}</h2>
+    <p id="article-content">{{blop.article}}</p>
   {% endif %}
   <h4>Comments: </h4>
   {% if user.is_authenticated %}
@@ -26,9 +38,9 @@
         {% csrf_token %}
       </form>
         <button class='edit_btn'>Edit</button>
-      <form action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
+      <form class="delete-form" action="{% url 'main_app:delete_comment' blop.id comment.id %}" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Delete" class="btn">
+        <input type="submit" value="Delete" class="btn delete">
       </form>
     {% endif %}
   {% endfor %}
