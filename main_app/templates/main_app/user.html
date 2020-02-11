@@ -3,20 +3,50 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'main_app/user.css' %}">
      <div class="container_three">
-          <a href="add.html">ADD BLOP</a>
-          <br></br>
+          <a href="{% url 'main_app:create_blop' %}">ADD BLOP</a>
+               <h1>My Blops</h1>
+          <br>
+          <br>
+     <h2>Videos</h2>
+          {% for video in videos %}
+          {% endfor %}
      <div class="row">
           <div class="column">
-               <h1>My Blops</h1>
-               <h2>Videos</h2>
-               <img class="blop cursor" src="" id="v" style="width:100%" onclick="currentSlide(1)" alt="blop 1">
+               <img class="blop cursor" src="" id="v" style="width:100%" onclick="currentSlide(1)" alt="blop_video_1">
           </div>
           <div class="column">
-               <h2>Images</h2>
-               <img class="blop cursor" src="" id="v" style="width:100%" onclick="currentSlide(2)" alt="blop 2">
+               <img class="blop cursor" src="" id="v" style="width:100%" onclick="currentSlide(2)" alt="blop_video_2">
           </div>
           <div class="column">
-               <h2>Articles</h2>
-               <img class="blop cursor" src="" id="a" style="width:100%" onclick="currentSlide(3)" alt="blop 3">
+               <img class="blop cursor" src="" id="a" style="width:100%" onclick="currentSlide(3)" alt="blop_video_3">
           </div>
-{% endblock %}
+          <br>
+          <br>
+     <h2>Images</h2>
+          {% for image in images %}
+          {% endfor %}
+     <div class="row">
+          <div class="column">
+               <img class="blop cursor" src="" id="i" style="width:100%" onclick="currentSlide(1)" alt="blop_image_1">
+          </div>
+          <div class="column">
+               <img class="blop cursor" src="" id="i" style="width:100%" onclick="currentSlide(2)" alt="blop_image_2">
+          </div>
+          <div class="column">
+               <img class="blop cursor" src="" id="i" style="width:100%" onclick="currentSlide(3)" alt="blop_image_3">
+          </div>
+          <br>
+          <br>
+     <h2>Articles</h2>
+          {% for article in articles %}
+          {% endfor %}
+     <div class="row">
+          <div class="column">
+               <img class="blop cursor" src="" id="a" style="width:100%" onclick="currentSlide(1)" alt="blop_article_1">
+          </div>
+               <img class="blop cursor" src="" id="a" style="width:100%" onclick="currentSlide(2)" alt="blop_article_2">
+          </div>
+          <div class="column">
+               <img class="blop cursor" src="" id="a" style="width:100%" onclick="currentSlide(3)" alt="blop_article_3">
+          </div>     
+{% endblock %} 

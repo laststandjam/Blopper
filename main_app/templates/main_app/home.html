@@ -1,6 +1,6 @@
 {% extends 'main_app/base.html' %} {% block content %}
 {% load static %}
-
+{% load embed_video_tags %}
 <link
   rel="stylesheet"
   type="text/css"
@@ -36,6 +36,7 @@
     <video src="{{blop.video.url}}"></video>
 {% endfor %}
 
+<<<<<<< HEAD
 <h3 id="pic1">REIGN SUPREME PIC</h3>
 {% for blop in images|slice:"0:5" %}
 <img src="{{ blop.image.url }}" />
@@ -54,11 +55,14 @@
 <h3 id="pic4">Top O'The Blops</h3>
 {% for blop in images|slice:"0:5" %}
 <img src="{{ blop.image.url }}" />
+=======
+{% video blop.video 'small' %}
+>>>>>>> master
 {% endfor %}
 
 <h3 id="pic5">Top O'The Blops</h3>
 {% for blop in images|slice:"0:5" %}
-<img src="{{ blop.image.url }}" />
+<img src="{{ blop.image}}" width="300" length="200">
 {% endfor %}
 
 <h3 id="articles">Top Blop Story</h3>
