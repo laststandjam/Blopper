@@ -36,7 +36,6 @@
     <video src="{{blop.video.url}}"></video>
 {% endfor %}
 
-<<<<<<< HEAD
 <h3 id="pic1">REIGN SUPREME PIC</h3>
 {% for blop in images|slice:"0:5" %}
 <img src="{{ blop.image.url }}" />
@@ -55,9 +54,9 @@
 <h3 id="pic4">Top O'The Blops</h3>
 {% for blop in images|slice:"0:5" %}
 <img src="{{ blop.image.url }}" />
-=======
+
 {% video blop.video 'small' %}
->>>>>>> master
+
 {% endfor %}
 
 <h3 id="pic5">Top O'The Blops</h3>
@@ -65,7 +64,27 @@
 <img src="{{ blop.image}}" width="300" length="200">
 {% endfor %}
 
-<h3 id="articles">Top Blop Story</h3>
+<h3 id="article1">REIGN SUPREME STORY</h3>
+{% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
+</div>
+{% endblock %}
+
+<h3 id="article2">Top O'The Blops</h3>
+{% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
+</div>
+{% endblock %}
+
+<h3 id="article3">Top O'The Blops</h3>
+{% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
+</div>
+{% endblock %}
+
+<h3 id="article4">Top O'The Blops</h3>
+{% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
+</div>
+{% endblock %}
+
+<h3 id="article5">Top O'The Blops</h3>
 {% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
 </div>
 {% endblock %}
