@@ -34,7 +34,7 @@
 {% for blop in articles%}
 <div class="acard">
     <a href="{% url 'main_app:blop_details' blop.id %}"><h3>{{blop.title}}</h3></a>
-    <p>{{blop.article}}</p>
+    <p>{{blop}}</p>
 
 </div>
 

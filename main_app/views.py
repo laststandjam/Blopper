@@ -20,13 +20,13 @@ def articles(request):
   return render(request, 'main_app/articles.html', {'articles': articles})
 
 def home(request):
-  videos = Blop.objects.exclude(video = None)
-  images = Blop.objects.exclude(image = None)
-  articles = Blop.objects.exclude(article = "")
+  videos = Blop.objects.exclude(video = None)[:5]
+  images = Blop.objects.exclude(image = None)[:5]
+  articles = Blop.objects.exclude(article = "")[:5]
   return render(request, 'main_app/home.html', {
     'videos': videos,
-    'images':images,
-    'articles':articles,
+    'images': images,
+    'articles': articles,
   })
 
 @login_required
