@@ -1,16 +1,12 @@
 {% extends 'main_app/base.html' %} {% block content %}
 {% load static %}
-{% load embed_video_tags %}
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'main_app/home.css' %}"
 />
-<div class="wrapper">
-<div id="title">
-  <h1>BLOPPERS</h1>
-</div>
 
+<<<<<<< HEAD
 <h3 id="vid1">REIGN SUPREME VID</h3>
 {% for blop in videos|slice:"0:5" %}
     <video src="{{blop.video.url}}"></video>
@@ -27,4 +23,6 @@
 {% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
 
 </div>
+=======
+>>>>>>> master
 {% endblock %}
