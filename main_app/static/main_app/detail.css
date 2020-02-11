@@ -1,0 +1,48 @@
+main {
+  margin: 10px;
+}
+
+h1 {
+  color: brown;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 55px;
+}
+
+h2 {
+  color: brown;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 26px;
+}
+
+#vid-container {
+  height: 40vw;
+  position: relative; 
+  display: block; 
+  width: 60vw;
+  margin: 0 5px;
+}
+
+#vid-container:first-child {
+  position: absolute; 
+  top: 0; 
+  left: 0;
+}
+
+#image-container {
+  max-width: 60vw;
+}
+
+#image-container img {
+  max-width: 100%;
+}
+
+#article-content {
+  color: rgb(0, 0, 0);
+  font-family: 'Arial';
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.delete-form {
+  display: inline;
+}
