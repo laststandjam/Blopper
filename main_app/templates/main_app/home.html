@@ -1,50 +1,9 @@
 {% extends 'main_app/base.html' %} {% block content %}
 {% load static %}
-{% load embed_video_tags %}
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'main_app/home.css' %}"
 />
-<div class="wrapper">
-<div id="title">
-  <h1>BLOPPERS</h1>
-</div>
 
-<h3 id="vid1">REIGN SUPREME VID</h3>
-{% for blop in videos|slice:"0:5" %}
-    <video src="{{blop.video.url}}"></video>
-{% endfor %}
-
-<h3 id="vid2">Top O'The Blops</h3>
-{% for blop in videos|slice:"0:5" %}
-    <video src="{{blop.video.url}}"></video>
-{% endfor %}
-
-<h3 id="vid3">Top O'The Blops</h3>
-{% for blop in videos|slice:"0:5" %}
-    <video src="{{blop.video.url}}"></video>
-{% endfor %}
-
-<h3 id="vid4">Top O'The Blops</h3>
-{% for blop in videos|slice:"0:5" %}
-    <video src="{{blop.video.url}}"></video>
-{% endfor %}
-
-<h3 id="vid5">Top O'The Blops</h3>
-{% for blop in videos|slice:"0:5" %}
-    <video src="{{blop.video.url}}"></video>
-{% endfor %}
-
-{% video blop.video 'small' %}
-{% endfor %}
-
-<h3 id="pic5">Top O'The Blops</h3>
-{% for blop in images|slice:"0:5" %}
-<img src="{{ blop.image}}" width="300" length="200">
-{% endfor %}
-
-<h3 id="articles">Top Blop Story</h3>
-{% for blop in articles|slice:"0:5" %}{{blop.title}} {%endfor%} 
-</div>
 {% endblock %}
