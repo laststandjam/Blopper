@@ -35,7 +35,6 @@ def blopper(request):
   videos = user_content.exclude(video = None)
   images = user_content.exclude(image = None)
   articles = user_content.exclude(article = "")
-  print(user_content)
   return render(request, 'main_app/user.html', {
     'user': user_content,
     'videos': videos,
@@ -107,7 +106,7 @@ def blop_create_article(request):
     return redirect('main_app:blopper')
   else:
     return render(request, 'main_app/blop_create.html', {
-      'blop': 'article',
+      'blop': 'video',
       'form': ArticleForm()
       })
 
