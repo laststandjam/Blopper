@@ -7,7 +7,7 @@ from embed_video.fields import EmbedVideoField
 
 class Blop(models.Model):
   creator = models.ForeignKey(User, on_delete =models.CASCADE)
-  title = models.CharField (max_length=100)
+  title = models.CharField (max_length=50)
   video  = EmbedVideoField(max_length=200, null=True, blank=True) 
   image = models.URLField(max_length=200, null=True, blank=True)
   article = models.TextField(max_length=1000, blank=True)

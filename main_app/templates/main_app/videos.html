@@ -1,5 +1,21 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
+{% load embed_video_tags %}
 {% load static %}
-<h1>VIDEOS HERE</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'main_app/videos_images.css' %}"/>
+
+<h1>VIDEOS</h1>
+<div class="center">
+  {% for blop in videos %}
+    {% video blop.video as my_video %}
+      <a href="{% url 'main_app:blop_details' blop.id %}"><div class="card">
+        <div class="img-container">
+          <img src={{ my_video.thumbnail }} />
+        </div>
+        <p>{{blop.title}}</p>
+      </div></a>
+    {% endvideo %}
+  {% endfor %}
+</div>
+
 {% endblock %}
