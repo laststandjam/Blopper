@@ -35,6 +35,7 @@ def blopper(request):
   videos = user_content.exclude(video = None)
   images = user_content.exclude(image = None)
   articles = user_content.exclude(article = "")
+  print(user_content)
   return render(request, 'main_app/user.html', {
     'user': user_content,
     'videos': videos,
