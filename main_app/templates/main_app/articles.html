@@ -1,5 +1,18 @@
-{% extends 'main_app/base.html' %}
-{% block content %}
-{% load static %}
-<h1>ARTICLES HERE</h1>
-{% endblock %}
+{% extends 'main_app/base.html' %} {% block content %} {% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'main_app/articles.css' %}"
+/>
+<h1 class="header">Word Made Blops</h1>
+{% for blop in articles%}
+<div class="card">
+  <div class="title">
+    <a href="{% url 'main_app:blop_details' blop.id %}"><h3>{{blop.title}}</h3></a>
+  </div>
+  <div class="content">
+    <p>{{blop.article}}</p>
+  </div>
+</div>
+
+{%endfor%} {% endblock %}
