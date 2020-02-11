@@ -10,12 +10,14 @@
   {% elif blop.article %}
 
   {% endif %}
-
-  <form action="{% url 'main_app:create_comment' blop.id %}" method="POST">
-    {% csrf_token %}
-    <input type="text" name="content">
-    <input type="submit" value="Submit Comment" class="btn">
-  </form>
+  <h4>Comments: </h4>
+  {% if user.is_authenticated %}
+    <form action="{% url 'main_app:create_comment' blop.id %}" method="POST">
+      {% csrf_token %}
+      <input type="text" name="content">
+      <input type="submit" value="Submit Comment" class="btn">
+    </form>
+  {% endif %}
   
   {% for comment in comments %}
     <p class="comments">{{comment}}</p>
