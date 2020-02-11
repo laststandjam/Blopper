@@ -7,8 +7,8 @@
     height: 100vh;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 3fr 3fr 3fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
 li {
     min-width: auto;
@@ -32,28 +32,117 @@ li {
 #title {
     color: brown;
     font-family: 'Bungee Shade', cursive;
-    font-size: 55px;
-    grid-column: 2 / 4; 
-    grid-row: 1 / 2;
-    display: flex;
-    justify-content: space-between;
+    font-size: 45px;
+    grid-column: 2 / 5; 
+    grid-row: 1;
+    /* display: flex;
+    justify-content: space-between; */
+    padding: 0px;
+    margin: -25px;
+    align-content: center;
 }
 
-#videos {
+#vid1 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);	
+}
+
+#vid2 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+#vid3 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+#vid4 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+#vid5 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 2 / 3;
+    grid-column: 5 / 6;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+/* #vid2 {
     font-family: 'Bungee Shade', cursive;
     grid-column: 2 / 3; 
     grid-row: 2 / 3;
 }
-
-#pictures {
+#vid3 {
     font-family: 'Bungee Shade', cursive;
     grid-column: 2 / 3; 
     grid-row: 3 / 4;
+} */
+
+#pic1 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 3 / 3;
+    grid-column: 1 / 2;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
 }
 
-#words {
+#pic2 {
     font-family: 'Bungee Shade', cursive;
-    grid-column: 2 / 3; 
+    grid-row: 3 / 3;
+    grid-column: 2 / 3;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#pic3 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 3 / 3;
+    grid-column: 3 / 4;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#pic4 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 3 / 3;
+    grid-column: 4 / 5;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#pic5 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 3 / 3;
+    grid-column: 5 / 6;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#articles {
+    font-family: 'Bungee Shade', cursive;
     grid-row: 4 / 5;
+    grid-column: 1 / 2;
 }
 
