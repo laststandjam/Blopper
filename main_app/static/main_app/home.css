@@ -140,9 +140,56 @@ li {
     color: rgb(0, 1, 238);
 }
 
-#articles {
+#article1 {
     font-family: 'Bungee Shade', cursive;
-    grid-row: 4 / 5;
+    grid-row: 3 / 3;
     grid-column: 1 / 2;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
 }
 
+#article1 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 4 / 4;
+    grid-column: 2 / 3;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#article2 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 4 / 4;
+    grid-column: 3 / 4;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#article3 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 4 / 4;
+    grid-column: 4 / 5;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#article4 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 4 / 4;
+    grid-column: 5 / 6;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
+
+#article5 {
+    font-family: 'Bungee Shade', cursive;
+    grid-row: 4 / 4;
+    grid-column: 5 / 6;
+    justify-content: start;
+    font-size: 15px;
+    color: rgb(0, 1, 238);
+}
