@@ -32,11 +32,10 @@
 
 <h3>Top Blop Story</h3>
 {% for blop in articles%}
-<div class="acard">
-    <a href="{% url 'main_app:blop_details' blop.id %}"><h3>{{blop.title}}</h3></a>
+<a href="{% url 'main_app:blop_details' blop.id %}"><div class="acard">
+    <h3>{{blop.title}}</h3>
     <p>{{blop}}</p>
-
-</div>
+</div></a>
 
 {%endfor%}
 
