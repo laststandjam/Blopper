@@ -3,27 +3,31 @@
 {% load static %}
 {% load embed_video_tags %}
 <link rel="stylesheet" type="text/css" href="{% static 'main_app/user.css' %}">
-     <div class="container_three">  
-          <h1>My Blops</h1>
-               <br>
-               <a href="{% url 'main_app:create_blop' %}">ADD BLOP</a>
-               <br>
-          <h2>My Videos</h2> 
-     <div class="img-container">                                                            {% for blop in videos %}
-               {% video blop.video 'tiny' %}
-                    <p>Title: {{ blop.title }}</p>
-                         {% endfor %}
-                    </div>
-          <h2>My Images</h2> 
-     <div class="img-container">                               
+          <div class="section"> 
+               <h1>My Blops</h1>
+                    <br>
+                    <a href="{% url 'main_app:create_blop' %}" class="button">ADD BLOP</a>
+                    <br>
+          <div class="section">
+     <h2>My Videos</h2> 
+          {% for blop in videos %}
+               <h3>Title: {{ blop.title }}</h3>
+                    {% video blop.video 'tiny' %}
+                    {% endfor %}
+               </div>
+               <div class="section">
+     <h2>My Images</h2>                               
           {% for blop in images %}
-               <p>Title: {{ blop.title }}</p>
+               <h3>Title: {{ blop.title }}</h3>
                     <img src="{{ blop.image }}" width="400" length="300" />
                          {% endfor %}
                     </div>
-          <h2>My Articles</h2>      
+               <div class="divider"></div>
+          <div class="section">
+     <h2>My Articles</h2>      
       <div>                          
-               {% for blop in articles %}
+          {% for blop in articles %}
+               <h3>Title: {{ blop.title }}</h3>
                     <p>{{blop.article}}</p>
                     <p>Title: {{ blop.title }}</p>
                {% endfor %}
@@ -31,5 +35,9 @@
   
    
 
+{% endblock %}
+
+          {% endfor %}
+     </div>
 {% endblock %}
 

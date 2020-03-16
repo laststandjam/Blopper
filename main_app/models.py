@@ -10,11 +10,15 @@ class Blop(models.Model):
   title = models.CharField (max_length=50)
   video  = EmbedVideoField(max_length=200, null=True, blank=True) 
   image = models.URLField(max_length=200, null=True, blank=True)
-  article = models.TextField(max_length=1000, blank=True)
+  article = models.TextField(max_length=10000, blank=True)
   likes = models.PositiveIntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True)
   def get_absolute_url(self):
     return reverse('main_app:home')
+  def __str__(self):
+    if len(self.article) < 150:
+      return self.article[:150]
+    return self.article[:150] + "..."
   class Meta():
     ordering = ['-likes']
 
